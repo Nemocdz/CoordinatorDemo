@@ -16,6 +16,11 @@
 		DA787AAB265D4ED900EC6A33 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA787AAA265D4ED900EC6A33 /* FirstViewController.swift */; };
 		DA787AAE265D548E00EC6A33 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA787AAD265D548E00EC6A33 /* SnapKit */; };
 		DA787AB0265D563700EC6A33 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA787AAF265D563700EC6A33 /* SecondViewController.swift */; };
+		DA787AB2265D5F9300EC6A33 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA787AB1265D5F9300EC6A33 /* Coordinator.swift */; };
+		DA787AB4265D5FD000EC6A33 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA787AB3265D5FD000EC6A33 /* AppCoordinator.swift */; };
+		DA787AB6265D618800EC6A33 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA787AB5265D618800EC6A33 /* MainCoordinator.swift */; };
+		DA787AB8265D636E00EC6A33 /* FirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA787AB7265D636E00EC6A33 /* FirstCoordinator.swift */; };
+		DA787ABA265D64C400EC6A33 /* SecondCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA787AB9265D64C400EC6A33 /* SecondCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 		DA787AA8265D4E0700EC6A33 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DA787AAA265D4ED900EC6A33 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		DA787AAF265D563700EC6A33 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		DA787AB1265D5F9300EC6A33 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DA787AB3265D5FD000EC6A33 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		DA787AB5265D618800EC6A33 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		DA787AB7265D636E00EC6A33 /* FirstCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCoordinator.swift; sourceTree = "<group>"; };
+		DA787AB9265D64C400EC6A33 /* SecondCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,11 @@
 				DA787AA8265D4E0700EC6A33 /* MainViewController.swift */,
 				DA787AAA265D4ED900EC6A33 /* FirstViewController.swift */,
 				DA787AAF265D563700EC6A33 /* SecondViewController.swift */,
+				DA787AB1265D5F9300EC6A33 /* Coordinator.swift */,
+				DA787AB3265D5FD000EC6A33 /* AppCoordinator.swift */,
+				DA787AB5265D618800EC6A33 /* MainCoordinator.swift */,
+				DA787AB7265D636E00EC6A33 /* FirstCoordinator.swift */,
+				DA787AB9265D64C400EC6A33 /* SecondCoordinator.swift */,
 				DA787A9A265D4B7400EC6A33 /* Main.storyboard */,
 				DA787A9D265D4B7500EC6A33 /* Assets.xcassets */,
 				DA787A9F265D4B7500EC6A33 /* LaunchScreen.storyboard */,
@@ -153,9 +168,14 @@
 			files = (
 				DA787AA9265D4E0700EC6A33 /* MainViewController.swift in Sources */,
 				DA787A95265D4B7400EC6A33 /* AppDelegate.swift in Sources */,
+				DA787AB2265D5F9300EC6A33 /* Coordinator.swift in Sources */,
 				DA787A97265D4B7400EC6A33 /* SceneDelegate.swift in Sources */,
+				DA787AB8265D636E00EC6A33 /* FirstCoordinator.swift in Sources */,
 				DA787AB0265D563700EC6A33 /* SecondViewController.swift in Sources */,
 				DA787AAB265D4ED900EC6A33 /* FirstViewController.swift in Sources */,
+				DA787AB6265D618800EC6A33 /* MainCoordinator.swift in Sources */,
+				DA787ABA265D64C400EC6A33 /* SecondCoordinator.swift in Sources */,
+				DA787AB4265D5FD000EC6A33 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

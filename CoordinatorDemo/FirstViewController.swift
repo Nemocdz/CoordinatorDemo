@@ -13,6 +13,8 @@ class FirstViewController: UIViewController {
         let color: UIColor
     }
     
+    var coordinator: FirstCoordinator!
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,16 +39,13 @@ class FirstViewController: UIViewController {
     
     @objc func clickButton(_ sender: UIButton) {
         let output = Output(color: view.backgroundColor!)
-        let viewController = SecondViewController(input: .init(output: output))
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
+        coordinator.presentSecond(output: output)
     }
 }
 
-extension FirstViewController: SecondViewControllerDelegate {
-    func secondViewController(_ viewController: SecondViewController, didCloseWith output: SecondViewController.Output) {
-        navigationController?.popViewController(animated: true)
-        view.backgroundColor = output.color
+extension FirstViewController {
+    func updateColor(_ color: UIColor) {
+        view.backgroundColor = color
     }
 }
 

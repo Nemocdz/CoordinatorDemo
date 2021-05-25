@@ -21,6 +21,7 @@ class SecondViewController: UIViewController {
     }
     
     weak var delegate: SecondViewControllerDelegate?
+    var coordinator: SecondCoordinator!
     
     let button = UIButton(type: .custom)
     
@@ -49,5 +50,6 @@ class SecondViewController: UIViewController {
     
     @objc func clickButton(_ sender: UIButton) {
         delegate?.secondViewController(self, didCloseWith: .init(color: view.backgroundColor!))
+        coordinator.finish()
     }
 }

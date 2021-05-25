@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
     let button1 = UIButton(type: .custom)
     let button2 = UIButton(type: .custom)
     
+    var coordinator: MainCoordinator!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Main"
@@ -37,21 +39,16 @@ class MainViewController: UIViewController {
     }
     
     @objc func clickButton1(_ sender: UIButton) {
-        let navigationController = UINavigationController(rootViewController: FirstViewController())
-        present(navigationController, animated: true, completion: nil)
+        coordinator.presentFirst()
     }
     
     @objc func clickButton2(_ sender: UIButton) {
-        let viewController = SecondViewController(input: .init(color: view.backgroundColor!))
-        viewController.delegate = self
-        let navigationController = UINavigationController(rootViewController: viewController)
-        present(navigationController, animated: true, completion: nil)
+        coordinator.presentSecond(color: view.backgroundColor!)
     }
 }
 
-extension MainViewController: SecondViewControllerDelegate {
-    func secondViewController(_ viewController: SecondViewController, didCloseWith output: SecondViewController.Output) {
-        dismiss(animated: true, completion: nil)
-        view.backgroundColor = output.color
+extension MainViewController {
+    func updateColor(_ color: UIColor) {
+        view.backgroundColor = color
     }
 }
