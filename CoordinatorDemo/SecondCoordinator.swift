@@ -7,21 +7,20 @@
 
 import UIKit
 
-class SecondCoordinator: Coordinator {
-    enum ShowType {
-        case present(UIViewController)
-        case push(UINavigationController)
-    }
-    
-    let showType: ShowType
+protocol SecondCoordinator: Coordinator {
+    func finish()
+}
+
+class SecondCoordinatorPresentImpl: SecondCoordinator {
+    unowned let fromViewController: UIViewController
     unowned var viewController: SecondViewController!
     
     weak var delegate: SecondViewControllerDelegate?
     
     let input: SecondViewController.Input
     
-    init(showType: ShowType, input: SecondViewController.Input) {
-        self.showType = showType
+    init(from viewController: UIViewController, input: SecondViewController.Input) {
+        self.fromViewController = viewController
         self.input = input
     }
     
@@ -29,22 +28,38 @@ class SecondCoordinator: Coordinator {
         let viewController = SecondViewController(input: input)
         viewController.delegate = delegate
         viewController.coordinator = self
-        switch showType {
-            case .present(let fromViewController):
-                let navigationConroller = UINavigationController(rootViewController: viewController)
-                fromViewController.present(navigationConroller, animated: true, completion: nil)
-            case .push(let navigationController):
-                navigationController.pushViewController(viewController, animated: true)
-        }
+        let navigationConroller = UINavigationController(rootViewController: viewController)
+        fromViewController.present(navigationConroller, animated: true, completion: nil)
         self.viewController = viewController
     }
     
     func finish() {
-        switch showType {
-            case .present(let fromViewController):
-                fromViewController.dismiss(animated: true, completion: nil)
-            case .push(let navigationController):
-                navigationController.popViewController(animated: true)
-        }
+        fromViewController.dismiss(animated: true, completion: nil)
+    }
+}
+
+class SecondCoordinatorPushImpl: SecondCoordinator {
+    unowned let navigationController: UINavigationController
+    unowned var viewController: SecondViewController!
+    
+    weak var delegate: SecondViewControllerDelegate?
+    
+    let input: SecondViewController.Input
+    
+    init(from navigationController: UINavigationController, input: SecondViewController.Input) {
+        self.navigationController = navigationController
+        self.input = input
+    }
+    
+    func start() {
+        let viewController = SecondViewController(input: input)
+        viewController.delegate = delegate
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
+        self.viewController = viewController
+    }
+    
+    func finish() {
+        navigationController.popViewController(animated: true)
     }
 }

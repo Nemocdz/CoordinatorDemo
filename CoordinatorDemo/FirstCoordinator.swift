@@ -7,7 +7,11 @@
 
 import UIKit
 
-class FirstCoordinator: Coordinator {
+protocol FirstCoordinator: Coordinator {
+    func presentSecond(output: FirstViewController.Output)
+}
+
+class FirstCoordinatorImpl: FirstCoordinator {
     unowned let fromViewController: UIViewController
     unowned var viewController: FirstViewController!
     unowned var navigationController: UINavigationController!
@@ -26,13 +30,13 @@ class FirstCoordinator: Coordinator {
     }
     
     func presentSecond(output: FirstViewController.Output) {
-        let coordinator = SecondCoordinator(showType: .push(navigationController), input: .init(output: output))
+        let coordinator = SecondCoordinatorPushImpl(from: navigationController, input: .init(output: output))
         coordinator.delegate = self
         coordinator.start()
     }
 }
 
-extension FirstCoordinator: SecondViewControllerDelegate {
+extension FirstCoordinatorImpl: SecondViewControllerDelegate {
     func secondViewController(_ viewController: SecondViewController, didCloseWith output: SecondViewController.Output) {
         self.viewController.updateColor(output.color)
     }

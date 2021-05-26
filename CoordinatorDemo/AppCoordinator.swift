@@ -17,7 +17,7 @@ class AppCoordinator: Coordinator {
     func start() {
         let navigationController = UINavigationController()
         window.rootViewController = navigationController
-        let mainCoordinator = MainCoordinator(navigationController: navigationController)
+        let mainCoordinator = MainCoordinatorImpl(navigationController: navigationController)
         mainCoordinator.start()
         window.makeKeyAndVisible()
     }
