@@ -13,7 +13,7 @@ class FirstViewController: UIViewController {
         let color: UIColor
     }
     
-    var coordinator: FirstCoordinator!
+    weak var coordinator: FirstCoordinator?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,7 +39,7 @@ class FirstViewController: UIViewController {
     
     @objc func clickButton(_ sender: UIButton) {
         let output = Output(color: view.backgroundColor!)
-        coordinator.presentSecond(output: output)
+        coordinator?.presentSecond(output: output)
     }
 }
 

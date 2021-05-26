@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     let button1 = UIButton(type: .custom)
     let button2 = UIButton(type: .custom)
     
-    var coordinator: MainCoordinator!
+    weak var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +39,11 @@ class MainViewController: UIViewController {
     }
     
     @objc func clickButton1(_ sender: UIButton) {
-        coordinator.presentFirst()
+        coordinator?.presentFirst()
     }
     
     @objc func clickButton2(_ sender: UIButton) {
-        coordinator.presentSecond(color: view.backgroundColor!)
+        coordinator?.presentSecond(color: view.backgroundColor!)
     }
 }
 

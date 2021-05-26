@@ -7,33 +7,29 @@
 
 import UIKit
 
-protocol MainCoordinator: Coordinator {
+protocol MainCoordinator: AnyObject {
     func presentFirst()
     func presentSecond(color: UIColor)
 }
 
-class MainCoordinatorImpl: MainCoordinator {
-    unowned let navigationController: UINavigationController
+class MainCoordinatorImpl: UIViewController, MainCoordinator, Coordinator {
     unowned var viewController: MainViewController!
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
+
     func start() {
         let viewController = MainViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        add(child: navigationController)
         viewController.coordinator = self
-        navigationController.viewControllers = [viewController]
         self.viewController = viewController
     }
     
     func presentFirst() {
-        let coordinator = FirstCoordinatorImpl(from: viewController)
+        let coordinator = FirstCoordinatorImpl(from: self)
         coordinator.start()
     }
     
     func presentSecond(color: UIColor) {
-        let coordinator = SecondCoordinatorPresentImpl(from: viewController, input: .init(color: color))
+        let coordinator = SecondCoordinatorPresentImpl(from: self, input: .init(color: color))
         coordinator.delegate = self
         coordinator.start()
     }

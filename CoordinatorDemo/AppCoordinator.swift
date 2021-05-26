@@ -7,18 +7,10 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
-    let window: UIWindow
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
+class AppCoordinator: UIViewController, Coordinator {    
     func start() {
-        let navigationController = UINavigationController()
-        window.rootViewController = navigationController
-        let mainCoordinator = MainCoordinatorImpl(navigationController: navigationController)
+        let mainCoordinator = MainCoordinatorImpl()
         mainCoordinator.start()
-        window.makeKeyAndVisible()
+        add(child: mainCoordinator)
     }
 }

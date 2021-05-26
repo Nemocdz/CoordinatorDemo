@@ -7,30 +7,36 @@
 
 import UIKit
 
-protocol FirstCoordinator: Coordinator {
+protocol FirstCoordinator: AnyObject {
     func presentSecond(output: FirstViewController.Output)
 }
 
-class FirstCoordinatorImpl: FirstCoordinator {
+class FirstCoordinatorImpl: UIViewController, FirstCoordinator, Coordinator {
     unowned let fromViewController: UIViewController
     unowned var viewController: FirstViewController!
-    unowned var navigationController: UINavigationController!
+    unowned var _navigationController: UINavigationController!
     
     init(from viewController: UIViewController) {
         fromViewController = viewController
+        super.init(nibName: nil, bundle: nil)
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func start() {
         let viewController = FirstViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
+        self._navigationController = navigationController
+        add(child: navigationController)
         viewController.coordinator = self
-        fromViewController.present(navigationController, animated: true, completion: nil)
+        fromViewController.present(self, animated: true, completion: nil)
         self.viewController = viewController
-        self.navigationController = navigationController
     }
     
     func presentSecond(output: FirstViewController.Output) {
-        let coordinator = SecondCoordinatorPushImpl(from: navigationController, input: .init(output: output))
+        let coordinator = SecondCoordinatorPushImpl(from: _navigationController, input: .init(output: output))
         coordinator.delegate = self
         coordinator.start()
     }
